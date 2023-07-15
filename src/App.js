@@ -1,27 +1,24 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useCallback } from "react";
+import ChildA from "./ChildA";
 import "./styles.css";
 
 function App() {
   const [countX, setCountX] = useState(0);
-  const [countY, setCountY] = useState(100);
+  const val = "sending props";
 
-  const multiply = useMemo(() => {
-    console.log("**** MULTIPLY ****");
-    return countX * 2;
-  }, []); // will call the multiply function if CountX or CountY is given as dependency
+  const newFunction = useCallback(() => {
+    return "new function";
+  }, []);
+
   return (
     <div className="App">
       <h3>
         {"CountX:"} {countX}
       </h3>
-      <h3>
-        {"CountY:"} {countY}
-      </h3>
-      <h3>
-        {"Multiply:"} {multiply}
-      </h3>
-      <button onClick={() => setCountX(countX + 1)}>Increase</button>
-      <button onClick={() => setCountY(countY - 1)}>Decrease</button>
+      <ChildA value={val} newfn={newFunction} />
+      <button className="btn btn-primary" onClick={() => setCountX(countX + 1)}>
+        Increase
+      </button>
     </div>
   );
 }

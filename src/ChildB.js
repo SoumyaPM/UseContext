@@ -1,13 +1,7 @@
-import React, { useContext } from "react";
-import { data } from "./App";
+import React from "react";
 
 function ChildB() {
-  const myName = useContext(data);
-  return (
-    <h3>
-      {"Hello ChildB"} {myName}
-    </h3>
-  );
+  return <h3>{"Hello ChildB"}</h3>;
 }
 
 export default ChildB;
